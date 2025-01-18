@@ -16,27 +16,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/css/rating.css">
-    <link rel="stylesheet" href="/css/navStyle.css">
-    <link rel="stylesheet" href="/css/indexStyle.css">
-
     <link rel="icon" href="/materials/icon.png" type="image/png">
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.9.2/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.9.2/mapbox-gl.js"></script>
 </head>
 
 <body>
-    <%- include("../includes/navbar.ejs") %>
-        <div class="container">
-            <%- include("../includes/flash.ejs") %>
-                <%- body %>
-        </div>
+    <div class="container">
+        <%- include("../includes/flash.ejs") %>
+            <%- body %>
+    </div>
 
 
-        <%- include("../includes/footer.ejs") %>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                crossorigin="anonymous"></script>
-            <script src="/js/script.js"></script>
+    <%- include("../includes/footer.ejs") %>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
 </body>
 
 </html>
