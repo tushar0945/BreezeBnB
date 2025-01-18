@@ -1,8 +1,7 @@
-// if (process.env.NODE_ENV != "production") {
-//   require("dotenv").config();
-// }
-require("dotenv").config();
-const express = require("express");
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
+
 const app = express();
 const path = require("path");
 const methodOverride = require("method-override");
@@ -22,7 +21,6 @@ const { resolveAny } = require("dns");
 // const MONGO_URL = "mongodb://127.0.0.1:27017/breezeBnB";
 const dbUrl = process.env.ATLASDB_URL;
 
-//app.set(express.static(path.join("views", __dirname)));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engeen", "ejs");
 app.engine("ejs", ejsMate);
@@ -79,7 +77,6 @@ async function main() {
 
 //Root
 app.get("/", (req, res) => {
-  // res.send("working");
   res.redirect("/listings");
 });
 
@@ -89,16 +86,6 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 });
-
-// app.get("/demo", async (req, res) => {
-//   let fakeUser = new User({
-//     email: "stude@hot.mail",
-//     username: "Im-stud",
-//   });
-
-//   let registeredUser = await User.register(fakeUser, "mypass");
-//   res.send(registeredUser);
-// });
 
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/review", reviewsRouter);
