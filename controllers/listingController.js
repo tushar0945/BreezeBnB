@@ -26,7 +26,7 @@ module.exports.showListing = async (req, res) => {
 };
 
 module.exports.createListing = async (req, res, next) => {
-  let response = await geocodingClient
+  let georesponse = await geocodingClient
     .forwardGeocode({
       query: req.body.listing.location,
       limit: 1,
@@ -38,7 +38,7 @@ module.exports.createListing = async (req, res, next) => {
   newListing.owner = req.user._id;
   newListing.image = { url, filename };
 
-  newListing.geometry = response.body.features[0].geometry;
+  newListing.geometry = georesponse.body.features[0].geometry;
 
   let savedListing = await newListing.save();
   console.log(savedListing);
@@ -61,6 +61,24 @@ module.exports.editForm = async (req, res) => {
 module.exports.updatetListing = async (req, res) => {
   let { id } = req.params;
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+
+  if (
+    req.body.listing.location &&
+    req.body.listing.location !== listing.location
+  ) {
+    let georesponse = await geocodingClient
+      .forwardGeocode({
+        query: req.body.listing.location,
+        limit: 1,
+      })
+      .send();
+
+    listing.geometry = georesponse.body.features[0].geometry;
+    console.log(listing.geometry);
+    listing.location = req.body.listing.location;
+    await listing.save();
+    console.log(listing.geometry);
+  }
 
   if (typeof req.file !== "undefined") {
     let url = req.file.path;
