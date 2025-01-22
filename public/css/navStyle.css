@@ -2,13 +2,10 @@
     transition: all 0.3s ease;
 }
 
-/* Adding a background to the dropdown menu on small screens */
 .navbar-collapse {
     background-color: #fff;
-    /* Change this to your preferred color */
 }
 
-/* Ensure spacing between navbar items on small screens */
 .navbar-nav {
     padding-left: 10px;
     padding-right: 10px;
@@ -16,7 +13,6 @@
 
 .navbar-toggler {
     border: 1px solid #ddd;
-    /* Optional: Add a border to the toggle button */
 }
 
 .btn-search {
@@ -39,7 +35,6 @@
 .search-inpt {
     border-radius: 25px;
     padding: 0.5rem 3rem 0.5rem 3rem;
-    /* font-size: 0.8rem; */
 }
 
 .navbar-toggler {
@@ -80,8 +75,6 @@
     margin-top: 0px;
 }
 
-/* when navigation is cliked */
-
 .navbar-toggler .top-bar {
     margin-top: 0px;
     transform: rotate(135deg);
@@ -97,8 +90,6 @@
     transform: rotate(-135deg);
 }
 
-/* state when navbar is collapsed */
-
 .navbar-toggler.collapsed .top-bar {
     margin-top: -20px;
     transform: rotate(0deg);
@@ -113,3 +104,10 @@
     margin-top: 20px;
     transform: rotate(0deg);
 }
+
+@media (max-width: 991px) {
+    .navbar .collapse.show {
+        border-bottom: 2px solid #ccc; 
+    }
+}
+
