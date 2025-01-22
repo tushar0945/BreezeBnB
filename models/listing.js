@@ -4,7 +4,7 @@ const { string, required } = require("joi");
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
-  title: { type: String, require: true },
+  title: { type: String, required: true }, // Fixed 'require' to 'required'
   description: { type: String },
   image: {
     url: String,
@@ -25,6 +25,22 @@ const listingSchema = new Schema({
       type: [Number],
       required: true,
     },
+  },
+  category: {
+    type: [String], // Array of strings
+    enum: [
+      "Rooms",
+      "Iconic_Cities",
+      "Mountains",
+      "Castles",
+      "Amazing_Pools",
+      "Camping",
+      "Farms",
+      "Arctic",
+      "Domes",
+      "Beaches",
+    ], // Allowed values
+    required: true, // Ensures at least one category is provided
   },
 });
 

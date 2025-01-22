@@ -85,6 +85,11 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currentUser = req.user;
+  res.locals.query = req.query.query || ""; // Search query
+  res.locals.showSearchBar = false; // Default: don't show search bar
+  res.locals.showNewlistingOption = false;
+  res.locals.showSignup = false;
+  res.locals.showLogin = false;
   next();
 });
 
@@ -97,6 +102,7 @@ app.all("*", (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  // console.log(err);
   let { status = 500, message = "SOMETHING WHENT WRONG..!" } = err;
   res.status(status).render("error.ejs", { message });
   // res.status(status).send(message);

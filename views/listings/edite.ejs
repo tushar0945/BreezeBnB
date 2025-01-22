@@ -53,6 +53,23 @@
                             required>
                         <div class="invalid-feedback">Please enter a valid location</div>
                     </div>
+                    <div class="mb-3">
+                        <label>Select Categories</label>
+                        <div class="d-flex flex-wrap gap-2">
+                            <% const categories=["Rooms", "Iconic_Cities" , "Mountains" , "Castles" , "Amazing_Pools"
+                                , "Camping" , "Farms" , "Arctic" , "Domes" , "Beaches" ]; %>
+                                <% categories.forEach(category=> { %>
+                                    <div>
+                                        <input type="checkbox" id="<%= category %>" name="listing[category][]"
+                                            value="<%= category %>" <% if (listing.category.includes(category)) { %>
+                                        checked <% } %> >
+                                            <label for="<%= category %>">
+                                                <%= category.replace("_", " " ) %>
+                                            </label>
+                                    </div>
+                                    <% }); %>
+                        </div>
+                    </div>
                     <!-- Submit Button -->
                     <button class="btn btn-dark d-block add-btn mx-start mt-4 mb-3" style="width: 100px;">Edit</button>
                 </form>
